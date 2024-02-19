@@ -31,6 +31,11 @@ function restoreBackup() {
 				link.perpendicularPart = backupLink.perpendicularPart;
 				link.text = backupLink.text;
 				link.lineAngleAdjust = backupLink.lineAngleAdjust;
+			} else if (backupLink.type == 'OutLink') {
+				link = new OutLink(nodes[backupLink.node]);
+				link.deltaX = backupLink.deltaX;
+				link.deltaY = backupLink.deltaY;
+				link.text = backupLink.text;
 			}
 			if(link != null) {
 				links.push(link);
@@ -87,6 +92,14 @@ function saveBackup() {
 				'lineAngleAdjust': link.lineAngleAdjust,
 				'parallelPart': link.parallelPart,
 				'perpendicularPart': link.perpendicularPart,
+			};
+		} else if(link instanceof OutLink) {
+			backupLink = {
+				'type': 'OutLink',
+				'node': nodes.indexOf(link.node),
+				'text': link.text,
+				'deltaX': link.deltaX,
+				'deltaY': link.deltaY,
 			};
 		}
 		if(backupLink != null) {

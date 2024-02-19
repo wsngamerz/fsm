@@ -45,9 +45,32 @@ p {
     text-align: center;
 }
 
-textarea {
+.output-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+}
+
+.output-container > * {
+    margin: 0;
     display: none;
-    width: 75%;
-    height: 400px;
+    flex: 1 1 0;
+    border-radius: 1rem;
+}
+
+#output {
     margin: 0 auto;
+    min-height: 200px;
+}
+
+#output-render {
+    aspect-ratio: 12 / 8;
+    background: white;
+}
+
+#output-render svg {
+    display: block;
+    width: 100%;
+    height: auto;
 }

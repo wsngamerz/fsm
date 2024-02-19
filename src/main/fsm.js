@@ -256,6 +256,14 @@ window.onload = function() {
 				selectedObject = currentLink;
 				links.push(currentLink);
 				resetCaret();
+			} else {
+				selectedObject = selectObject(originalClick.x, originalClick.y);
+				if (selectedObject != null && selectedObject instanceof Node) {
+					currentLink = new OutLink(selectedObject, crossBrowserRelativeMousePos(e));
+					selectedObject = currentLink;
+					links.push(currentLink);
+					resetCaret();
+				}
 			}
 			currentLink = null;
 			draw();
@@ -361,10 +369,14 @@ function crossBrowserRelativeMousePos(e) {
 	};
 }
 
-function output(text) {
+function output(text, render = false) {
 	var element = document.getElementById('output');
+	var renderElement = document.getElementById('output-render');
 	element.style.display = 'block';
 	element.value = text;
+
+	renderElement.style.display = render ? 'block' : 'none';
+	renderElement.innerHTML = render ? text : "";
 }
 
 function saveAsPNG() {
@@ -383,7 +395,7 @@ function saveAsSVG() {
 	drawUsing(exporter);
 	selectedObject = oldSelectedObject;
 	var svgData = exporter.toSVG();
-	output(svgData);
+	output(svgData, true);
 	// Chrome isn't ready for this yet, the 'Save As' menu item is disabled
 	// document.location.href = 'data:image/svg+xml;base64,' + btoa(svgData);
 }

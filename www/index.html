@@ -13,7 +13,12 @@
 <div>
     <p class="center">Export as: <a href="javascript:saveAsPNG()">PNG</a> | <a href="javascript:saveAsSVG()">SVG</a> |
         <a href="javascript:saveAsLaTeX()">LaTeX</a></p>
-    <textarea id="output"></textarea>
+
+    <div class="output-container">
+        <textarea id="output"></textarea>
+        <div id="output-render"></div>
+    </div>
+
     <p>The big white box above is the FSM designer.&nbsp; Here's how to use it:</p>
     <ul>
         <li><b>Add a state:</b> double-click on the canvas</li>
@@ -27,8 +32,20 @@
         <li><b>Type greek letter:</b> put a backslash before it (like "\beta")</li>
     </ul>
     <p>This was made in HTML5 and JavaScript using the canvas element.</p>
+    <p>Will's modifications:</p>
+    <ul>
+        <li>Export png to a new tab</li>
+        <li>Increased canvas size to <i>1200x800</i></li>
+        <li>Added <b>OutLink</b> link type</li>
+        <li>Render SVG next to SVG export</li>
+        <li>SVG uses viewBox over explicit width and height</li>
+    </ul>
 </div>
-<p>Created by <a href="http://madebyevan.com/">Evan Wallace</a> in 2010</p>
+
+<div class="center">
+    <p>Created by <a href="http://madebyevan.com/">Evan Wallace</a> in 2010</p>
+    <p>A few modifications by <a href="https://williamneild.com">William Neild</a> in 2024</p>
+</div>
 
 <script src="fsm.js"></script>
 </body>
